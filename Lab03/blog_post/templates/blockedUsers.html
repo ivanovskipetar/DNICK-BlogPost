@@ -1,0 +1,32 @@
+{% extends "base.html"%}
+{% block content%}
+
+<div class="container mt-3 mb-4 d-flex flex-column align-items-center">
+    <div class="row">
+        <div class="col mt-4">
+              <div class="col-md-12">
+                  <h1>You have blocked:</h1>
+                <ul class="list-group list-group-vertical">
+                  {% for blockedUser in blockedUsers %}
+                      <li class="list-group-item list-group-item-danger">{{ blockedUser }}</li>
+                  {% empty %}
+                      <li class="list-group-item">Sorry, no blocked users in this list.</li>
+                  {% endfor %}
+                </ul>
+              </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+                <div class="col mt-4">
+                            <form action="" method="POST" class="text-center">
+                                {% csrf_token %}
+                                {{ form }}
+                                <button class="btn btn-danger mt-2" type="submit">Block</button>
+                            </form>
+
+                </div>
+    </div>
+</div>
+
+
+{% endblock %}
